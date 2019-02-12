@@ -38,6 +38,7 @@ define int foo {- {10 7}) (This is discouraged but will otherwise have no effect
 ```
 
 A list of most basic functions is included for reference below:
+
 Function        | Syntax                                | Description                                           | Example
 ----------------|---------------------------------------|-------------------------------------------------------|----------------------------------
 define          | define <type> <var> <value>           | Defines a variable or function.                       | define int foo 12 <br> define string() placeName : <br>     return "Cincinnati"
