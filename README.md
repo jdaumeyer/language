@@ -11,8 +11,16 @@ Guidelines
 * Code is treated like data, able to be stored moved and applied.
 * Functions are meant to be pure, meaning that we will have to provide a library for standard input and output.
 * All data remains constant, It is only changed from functions.
-## Syntax
-### Basic Structure:
+
+### FUNCIONS
+The language is based around functions. Every function will accept a given number of parameters,
+throwing an exception if incorrect data types or an incorrect number of parameters are presented.
+
+```
+Example:
+<function name> <parameter 1> <parameter 2> <parameter 3> ...
+```
+Functions even include seemingly basic instructions such as operators (seen below).
 Function precedes the parameters. This way the program will run faster on stack memory systems.
 ```
 Example:
@@ -20,19 +28,30 @@ Example:
 Fibonacci 5   // Calculates the 5th Fibonacci number
 ```
         
-Curly Brackets surround all code in order to make it  easier on the compiler to separate code in order to determine what to run when
+Curly brackets and parenthesis may surround arbitrary code to make it more "human readable".
+As the language has no order of operations, these markings are treated as non-characters.
 ```
 Example:
 { + 1 2 }
-if > 1 2 + 1 2
+if > (+ 1 2) (+ 1 2)
+define int foo {- {10 7}) (This is discouraged but will otherwise have no effect on the code.)
 ```
+
+A list of most basic functions is included for reference below:
+Function		| Syntax								| Description											| Example
+----------------|---------------------------------------|-------------------------------------------------------|----------------------------------
+ define			| define <type> <var> <value>			| Defines a variable or function.						| define int foo 12 <br> define string() placeName : <br>     return "Cincinnati"
+ =				| = <var> <value>						| Assigns a value to an existing variable of smae type.	| = foo 42 <br> = bar {+ placeName " in the Spring"}
+ +				| + <value1> <value2>					| Adds or concatenates values depending on data type.	| + 9 10 #returns 19 <br> + "S" "winter" #returns Wummer
+ -				| - <value1> <value2>					| Subtracts values of type int or float.				| - 9 10 #reutrns -1 <br> - 8.67 5.30 #returns 3.37
+
 ### Data Types:
 The list of data types is able to be kept so small due to data having a dynamically created size. Instead of having a hard cap on the size of a variable, the language will look at the variable’s value and give it the size needed. This however is a fixed size as all variables are immutable.
 
 Type     | Description                                |Example
 ---------|--------------------------------------------|-----------------------------------------
 Integers | Basic numbers dynamically allocated size   | `int = foo <integer>`
-Strings  |Plain Text                                  | `string = bar <string without quotes>`
+Strings  | Plain Text                                 | `string = bar <string without quotes>`
 Booleans | True or false                              | `boolean = fizz <reserved word true/false>`
 Floats   | Decimal Numbers                            | `float = buzz <decimal>`
 Arrays   | A list of any of the above data types      | `array = names <length>`
