@@ -41,7 +41,7 @@ Arrays   | A list of any of the above data types      | `array = names <length>`
    Follows the format
    `<operator> <value1> <value2>`
    
-Opperator                                                   | Effect
+Operator                                                    | Effect
 ------------------------------------------------------------|---------------------------------------------------
 Assignment (=)                                              | This operator is special as it doesn’t return anything (all others do).<br>Value1 is the variable name<br>Value2 is the value to assign.
 Addition (+)                                                |Value1 is an integer, string, boolean, float, or array.<br>For strings it appends the data to the string<br>Value2 is the same, but must match the type of Value1.
