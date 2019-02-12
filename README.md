@@ -37,70 +37,55 @@ Booleans | True or false                              | `boolean = fizz <reserve
 Floats   | Decimal Numbers                            | `float = buzz <decimal>`
 Arrays   | A list of any of the above data types      | `array = names <length>`
 
-
-Operators:
-    Follows the format
-    <operator> <value1> <value2>
-Assignment (=)
-This operator is special as it doesn’t return anything (all others do).
-Value1 is the variable name
-Value2 is the value to assign.
-Addition (+)
-Value1 is an integer, string, boolean, float, or array.
-For strings it appends the data to the string
-Value2 is the same, but must match the type of Value1.
-Subtraction (-)
-Multiplication (*)
-Division (/)
-Modulus (%)
-Less Than / Greater Than (<) (>)
-Less Than or Equal To / Greater Than or Equal To (<=) (>=)
-Keywords:
+### Operators:
+   Follows the format
+   `<operator> <value1> <value2>`
+   
+Opperator                                                   | Effect
+------------------------------------------------------------|---------------------------------------------------
+Assignment (=)                                              | This operator is special as it doesn’t return anything (all others do).<br>Value1 is the variable name<br>Value2 is the value to assign.
+Addition (+)                                                |Value1 is an integer, string, boolean, float, or array.<br>For strings it appends the data to the string<br>Value2 is the same, but must match the type of Value1.
+Subtraction (-)                                             |
+Multiplication (*)                                          |
+Division (/)                                                |
+Modulus (%)                                                 |
+Less Than / Greater Than (<) (>)                            |
+Less Than or Equal To / Greater Than or Equal To (<=) (>=)  |
+### Keywords:
 Kept down to just the basics to make the language a lot easier to learn and keep it from becoming too verbose. In the future more keywords may need to be added but these should be kept to the absolute minimum. If it’s possible, instead of adding a new keyword it is preferable to add the functionality into a standard library. 
-function (f)
-Defines a function
-if (i)
-Comparison statement, only runs code if the provided boolean is true
-do (d)
-Do code while a condition is true
-true (t)
-Evaluates to true, is accepted by conditionals
-false (f)
-Evaluates to false, is rejected by conditionals
-undefined (u)
-Used when a variable is declared but not assigned a value.
-int (n)
-Declares an integer variable
-string (s)
-Declares a string variable
-float (p)
-Declares a float
-bool (b)
-Declares a boolean
-array (a)
-Declares an array
-import (m)
-During compilation, appends the selected file to the top of the source code
 
-    Compilation
+Keyword       | Description
+--------------|-------------------------------------------------
+function (f)  | Defines a function
+if (i)        | Comparison statement, only runs code if the provided boolean is true
+do (d)        | Do code while a condition is true
+true (t)      | Evaluates to true, is accepted by conditionals
+false (f)     | Evaluates to false, is rejected by conditionals
+undefined (u) | Used when a variable is declared but not assigned a value.
+int (n)       | Declares an integer variable
+string (s)    | Declares a string variable
+float (p)     | Declares a float
+bool (b)      | Declares a boolean
+array (a)     | Declares an array
+import (m)    | During compilation, appends the selected file to the top of the source code
+return (r)    | Returns a value as the output of a function
+
+### Compilation
 The language will be compiled, using a C based compiler, into machine code that can then be run. This is to ensure that the language runs as fast as possible. However, to get the language started, we will be using what’s called a transpiler. Which essentially takes our language and puts it into another, likely C. 
 
-    Standard Library Functions
+### Standard Library Functions
 These are functions that are built into the language. They are useable in every program without having to be imported. This means that they are basic functions that are used for simple operations.
-add x y
 
+Function          | Effect
+------------------|------------------------------------------
+add x y           | Adds x and y together
+subtract x y      | Subtracts y from x
+multiply x y      | Multiplies x by y
+divide x y        | Dividex x by y
+iterate x         | returns the value of x + 1
+compare x y       | compares x and y. `true` if they are equal, `false` if not
+output x          | prints x to the terminal
 
-subtract x y
-
-
-multiple x y
-
-
-divide x y
-
-
-iterate x 
-returns the value of x + 1
 
 
 
