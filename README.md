@@ -86,10 +86,11 @@ Data Type	|Type     | Description                               		 			|Example
 ------------|---------|-------------------------------------------------------------|-----------------------------------------
 int 		|Integers | Basic numbers dynamically allocated size, defaults to 0.	| `define int foo 42`
 string		|Strings  | Plain Text, defaults to ""									| `define string bar "Hello world!"`
-bool		|Booleans | True or false, defaults to false							| `define bool fizz false`
-float		|Decimals | Decimal Numbers, defaults to 0.0							| `define float buzz 8.675309`
-array		|Arrays   | A list of arbitrary functions, defaults to length 0			| `define array fuzz 10`
-void		|Void     | A null data type. Can only be set to value of "void"		| `define void bizz void`
+bool		|Booleans | True or false, defaults to false							| `define bool far false`
+float		|Decimals | Decimal Numbers, defaults to 0.0							| `define float boo 8.675309`
+array		|\(any\)  | Stores a list of arbitrary other types.						| `define array fizz 3
+final		|\(any\)  | Stores a single arbitrary other type that cannot be changed.| `define final buzz 3.141592653
+void		|Void     | A null data type. Can only be set to value of "void"		| `define void fuzz void`
 
 ### ADDITIONAL SYNTAX
 Curly brackets and parenthesis may surround arbitrary code to make it more "human readable".
@@ -113,6 +114,46 @@ Code surrounded in quotation marks will be interpreted as a string. To put quota
 #Example:
 "\"I am a string,\" said the string, which was what he was when he was thinking through that tough thorough thought then."
 ```
+
+### ARRAY FUNCTIONS
+Arrays can be created of arbitrary length by using `define array <arrayName> <length>`. Arrays, 
+when called, act as a function expecting one of the following functions to be called.
+
+
+Array Method			| Definition															| Example
+------------------------|-----------------------------------------------------------------------|---------------------------------
+`length`				|Returns an integer representing the current size of the array.			|`arr length`
+`get` <index>			|Returns value at given index.											|`arr get 0'
+`set` <index> <value>	|Sets a given index to the given value.									|'arr set 0 "I'm Pickle Rick"
+`push` <value>			|Sets first index of value void to the given value. If no indexes are void, adds index and sets in that location. Returns index with which value was set.|`arr push "Eleven"` 
+```
+#Example:
+define array foo 6
+define array bar 0
+
+foo push 82 #void getting replaced
+foo push 82
+foo push 82
+foo push "Lot more than 82 toothpicks there Ray."
+
+bar push void
+bar push void
+bar push "Ash" #void getting replaced
+bar push "Tree"
+bar push "Lane"
+bar set 3 "Never mind"
+
+output bar get 0
+output foo
+output bar
+```
+The above program would output the following. Note the remaining void indexes.
+```
+Ash
+[82,82,82,"Lot more than 82 toothpicks there Ray.",void,void]
+["Ash","Tree","Never mind"]
+```
+
 
 ### COMPILATION
 The language will be compiled using a C based compiler into machine code that can then be run.
