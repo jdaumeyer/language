@@ -14,7 +14,7 @@ while < primes.length primeLimit :
 	define bool notPrime false
 	
 	#for <run once function> <boolean expression> <run after each iteration> :
-	for (define int i 0) (& {< i (primes length)} {! notPrime}) (iterate i :)
+	for (define int i 2) (& {< i (primes length)} {! notPrime}) (iterate i :)
 		
 		if == (% currentNumber primes i) 0 :
 			= notPrime true;
