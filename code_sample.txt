@@ -1,0 +1,30 @@
+# This is a sample file. It is intended as a proof of concept.
+
+# If functional, it should output the first 100 prime numbers.
+
+
+# define <datatype> <name> <value>
+define int currentNumber 2
+define int primeLimit 100
+define array primes 0 #array length of 0
+ 
+# while <boolean expression> :
+while < primes.length primeLimit :
+	
+	define bool notPrime false
+	
+	#for <run once function> <boolean expression> <run after each iteration> :
+	for (define int i 0) (& {< i (primes length)} {! notPrime}) (iterate i :)
+		
+		if == (% currentNumber primes i) 0 :
+			= notPrime true;
+	
+	#if <boolean expression>
+	if ! notprime :
+		# function <param1> <param2> ...
+		primes push currentNumber
+	
+	++ currentNumber
+	
+# output <int/bool/string/float/array/object>
+output primes
