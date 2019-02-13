@@ -123,8 +123,8 @@ when called, act as a function expecting one of the following functions to be ca
 Array Method			| Definition															| Example
 ------------------------|-----------------------------------------------------------------------|---------------------------------
 `length`				|Returns an integer representing the current size of the array.			|`arr length`
-`get` <index>			|Returns value at given index.											|`arr get 0'
-`set` <index> <value>	|Sets a given index to the given value.									|'arr set 0 "I'm Pickle Rick"
+`get` <index>			|Returns value at given index.											|`arr get 0`
+`set` <index> <value>	|Sets a given index to the given value.									|'arr set 0 "I'm Pickle Rick"`
 `push` <value>			|Sets first index of value void to the given value. If no indexes are void, adds index and sets in that location. Returns index with which value was set.|`arr push "Eleven"` 
 ```
 #Example:
