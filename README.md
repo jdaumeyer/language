@@ -69,6 +69,7 @@ A list of functions loaded in any executed program is included for reference bel
  ==				| `== <value1> <value2>`				| False unless vars are same type and value.			| `== 82 "Lot more than 82 toothpicks, Ray."`
  if				| `if <boolean> :`						| Executes following code block if true.				| `if true :`<br>`   output "hi"`
  while			| `while <boolean> :`					| Executes following code block repeatedly until false. | `while true :`<br>`   output "hi"`
+ for			| `for <runOnce> <boolean> <runEvery> :`| Standard for loop.									| `for (define int i 0) (< i 100) (++ i)` 
  iterate		| `iterate <var> <amount>`				| Adds the given value to the var of type int or float. | `iterate foo 2`
  \+\+			| `++ <var>`							| The equivalent of `iterate <var> 1`					| `++ foo`
  \-\-			| `-- <var>`							| The equivalent of `iterate <var> -1`					| `-- foo`
