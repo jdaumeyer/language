@@ -67,8 +67,8 @@ A list of functions loaded in any executed program is included for reference bel
  \>				| `> <value1> <value2>`					| Is value1 greater than value2, both of same type?		| `> 9 10 #returns false`
  \<= or \>=		| `[see above]`							| Same as above, but returns true if values are equal.	| `<= 1 1 #returns true`
  ==				| `== <value1> <value2>`				| False unless vars are same type and value.			| `== 82 "Lot more than 82 toothpicks, Ray."`
- if				| `if <boolean> :`						| Executes following code block if true.				| `if true :`<br>`    output "hi"`
- while			| `while <boolean> :`					| Executes following code block repeatedly until false. | `while true :`<br>`    output "hi"`
+ if				| `if <boolean> :`						| Executes following code block if true.				| `if true :`<br>`   output "hi"`
+ while			| `while <boolean> :`					| Executes following code block repeatedly until false. | `while true :`<br>`   output "hi"`
  iterate		| `iterate <var> <amount>`				| Adds the given value to the var of type int or float. | `iterate foo 2`
  \+\+			| `++ <var>`							| The equivalent of `iterate <var> 1`					| `++ foo`
  \-\-			| `-- <var>`							| The equivalent of `iterate <var> -1`					| `-- foo`
@@ -88,8 +88,8 @@ int 		|Integers | Basic numbers dynamically allocated size, defaults to 0.	| `de
 string		|Strings  | Plain Text, defaults to ""									| `define string bar "Hello world!"`
 bool		|Booleans | True or false, defaults to false							| `define bool far false`
 float		|Decimals | Decimal Numbers, defaults to 0.0							| `define float boo 8.675309`
-array		|\(any\)  | Stores a list of arbitrary other types.						| `define array fizz 3
-final		|\(any\)  | Stores a single arbitrary other type that cannot be changed.| `define final buzz 3.141592653
+array		|\(any\)  | Stores a list of arbitrary other types.						| `define array fizz 3`
+final		|\(any\)  | Stores a single arbitrary other type that cannot be changed.| `define final buzz 3.141592653`
 void		|Void     | A null data type. Can only be set to value of "void"		| `define void fuzz void`
 
 ### ADDITIONAL SYNTAX
