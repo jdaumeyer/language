@@ -12,41 +12,46 @@ Guidelines
 * Functions are meant to be pure, meaning that we will have to provide a library for standard input and output.
 * All data remains constant, It is only changed from functions.
 
-### FUNCTIONS
+###HOW TO READ THIS DOCUMENT
+-Code within angle brackets is to be treated as a value which must be filled in by the programmer.
+-Lines following the pound symbol (#) are comments and do not affect code execution.
+-This document is designed as documentation for those writing code in the language, but will also be used
+to plan future development. Any listed features may not be added, may be removed, or may be altered at any time.
+
+### FUNCTION SYNTAX
 The language is based entirely around blocks of text called functions. Every function will accept a defined number of parameters,
 throwing an exception if incorrect data types are presented. Parameters will directly follow the function declaration, separated
 by a single space character.
-
 ```
-Example:
+#Example:
 <function name> <parameter 1> <parameter 2> <parameter 3> ...
 ```
 
-Functions even include seemingly basic instructions such as operators (seen below).
-Function precedes the parameters. This way the program will run faster on stack memory systems.
+###FUNCTION DECLARATION
+Custom functions can be defined using the process depicted below. For additional usage of the define function,
+see "VANILLA FUNCTIONS" below.
 
+Functions are defined using the syntax 
+```define <type> <name> <paramCount>``` 
+where type is the returned dataType,
+name is the name if the function, and paramCount is the number of parameters. This is demonstrated below as a
+simple concatenation function.
 ```
-Example:
-+ 1 2         // Adds 1 and 2
-Fibonacci 5   // Calculates the 5th Fibonacci number
+#Example:
+define string TriCat 3 :
+	return + PARAM_1 (+ PARAM_2 PARAM_3)
 ```
+Parameters are accessed through the local variables of PARAM_1, PARAM_2, PARAM_3 and so on. All functions must
+have a return condition. For functions that wish to not return a value, it is recommended to use a return type
+of "void" to save memory.
 
-Curly brackets and parenthesis may surround arbitrary code to make it more "human readable".
-As the language has no order of operations, these markings are treated as non-characters.
-
-```
-Example:
-{ + 1 2 }
-if > (+ 1 2) (+ 1 2)
-define int foo {- {10 7}) (This is discouraged but will otherwise have no effect on the code.)
-```
-
-A list of most basic functions is included for reference below:
+###VANILLA FUNCTIONS
+A list of functions loaded in any executed program is included for reference below:
 
  Function		| Syntax								| Description											| Example
 ----------------|---------------------------------------|-------------------------------------------------------|----------------------------------
  \<variable\>	| `foo`									| Will return the stored value of the variable.			| `foo`
- define			| `define <type> <var> <value>`			| Defines a variable or function.						| `define int foo 12`
+ define			| `define <type> <name> <value>`		| Defines a variable or function.						| `define int foo 12`
  =				| `= <var> <value>`						| Assigns a value to an existing variable of same type.	| `= foo 42`
  \+				| `+ <value1> <value2>`					| Adds or concatenates values depending on data type.	| `+ "S" "winter" #returns Wummer`<br>`+ 9 10 #returns 21`
  \-				| `- <value1> <value2>`					| Subtracts values of type int or float.				| `- 9 10 #returns -1`
@@ -59,24 +64,45 @@ A list of most basic functions is included for reference below:
  ==				| `== <value1> <value2>`				| False unless vars are same type and value.			| `== 82 "Lot more than 82 toothpicks, Ray."`
  if				| `if <boolean> :`						| Executes following code block if true.				| `if true :`<br>`    output "hi"`
  while			| `while <boolean> :`					| Executes following code block repeatedly until false. | `while true :`<br>`    output "hi"`
- import			| `import <filename as string>`			| Appends the referenced file to the active program.	| `import "crown_prince.doc.exe"
- return			| `return <value>`						| Evaluates deepest nested function to equal value.		| `return 42`
  iterate		| `iterate <var> <amount>`				| Adds the given value to the var of type int or float. | `iterate foo 1`
  \+\+			| `++ <var>`							| The equivalent of `iterate <var> 1`					| `++ foo`
- \-\-			| `-- <var>`							| The equivalent of `iterate <var> -1`					| `-- foo'
- toString		| 'toString <value>`					| Converts the given value of any type to a string.		| `toString arrayOfAllEnglishWords`
+ \-\-			| `-- <var>`							| The equivalent of `iterate <var> -1`					| `-- foo`
+ toString		| `toString <value>`					| Converts the given value of any type to a string.		| `toString arrayOfAllEnglishWords`
+ import			| `import <filename as string>`			| Appends the referenced file to the active program.	| `import "crown_prince.doc.exe"`
+ return			| `return <value>`						| Evaluates deepest nested function to equal value.		| `return 42`
  output			| `output <value>`						| Outputs the value to console.							| `output "Hello world!"`
  
-### Data Types:
-The list of data types is able to be kept so small due to data having a dynamically created size. Instead of having a hard cap on the size of a variable, the language will look at the variable’s value and give it the size needed. This however is a fixed size as all variables are immutable.
+###DATA TYPES
+The list of data types is able to be kept so small due to data having a dynamically created size.
+Instead of having a hard cap on the size of a variable, the language will look at the variable’s value and give it the size needed.
+This, however, is a fixed size, as all variables are immutable.
 
 Data Type	|Type     | Description                               		 			|Example
 ------------|---------|-------------------------------------------------------------|-----------------------------------------
 int 		|Integers | Basic numbers dynamically allocated size, defaults to 0.	| `define int foo 42`
 string		|Strings  | Plain Text, defaults to ""									| `define string bar "Hello world!"`
 bool		|Booleans | True or false, defaults to false							| `define bool fizz false`
-float		|Floats   | Decimal Numbers, defaults to 0.0							| `define float buzz 8.675309`
+float		|Decimals | Decimal Numbers, defaults to 0.0							| `define float buzz 8.675309`
 array		|Arrays   | A list of arbitrary functions, defaults to length 0			| `define array fuzz 10`
+void		|Void     | A null data type. Can only be set to value of "void"		| `define void bizz void`
 
-### Compilation
-The language will be compiled, using a C based compiler, into machine code that can then be run. This is to ensure that the language runs as fast as possible. However, to get the language started, we will be using what’s called a transpiler. Which essentially takes our language and puts it into another, likely C. 
+###ADDITIONAL SYNTAX
+Curly brackets and parenthesis may surround arbitrary code to make it more "human readable".
+As the language has no order of operations, these markings are treated as non-characters.
+```
+#Example:
+{ + 1 2 }
+if > (+ 1 2) (+ 1 2)
+define int foo {- {10 7}) (This is discouraged but will otherwise have no effect on the code.)
+```
+
+Single line comments are available for developers to provide human-readable code for complex logic.
+Good code and good usage of parenthesis will need few if any comments.
+```
+#Example:
+```
+
+### COMPILATION
+The language will be compiled using a C based compiler into machine code that can then be run.
+This is to ensure that the language runs as fast as possible. However, to get the language started, 
+we will be using a Transpiler (Markipiler in American English) likely coded in javascript.
