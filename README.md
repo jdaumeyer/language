@@ -43,6 +43,8 @@ simple concatenation function.
 #Example:
 define string TriCat 3 :
 	return + PARAM_1 (+ PARAM_2 PARAM_3)
+	
+output TriCat "A man, " "a plan, " "a God's 'Nam, "
 ```
 Parameters are accessed through the local variables of `PARAM_1`, `PARAM_2`, `PARAM_3` and so on. All functions must
 have a return condition. For functions that wish to not return a value, it is recommended to use a return type
@@ -67,7 +69,7 @@ A list of functions loaded in any executed program is included for reference bel
  ==				| `== <value1> <value2>`				| False unless vars are same type and value.			| `== 82 "Lot more than 82 toothpicks, Ray."`
  if				| `if <boolean> :`						| Executes following code block if true.				| `if true :`<br>`    output "hi"`
  while			| `while <boolean> :`					| Executes following code block repeatedly until false. | `while true :`<br>`    output "hi"`
- iterate		| `iterate <var> <amount>`				| Adds the given value to the var of type int or float. | `iterate foo 1`
+ iterate		| `iterate <var> <amount>`				| Adds the given value to the var of type int or float. | `iterate foo 2`
  \+\+			| `++ <var>`							| The equivalent of `iterate <var> 1`					| `++ foo`
  \-\-			| `-- <var>`							| The equivalent of `iterate <var> -1`					| `-- foo`
  toString		| `toString <value>`					| Converts the given value of any type to a string.		| `toString arrayOfAllEnglishWords`
@@ -106,7 +108,15 @@ Good code and good usage of parenthesis will need few if any comments.
 #Example:
 ```
 
+Code surrounded in quotation marks will be interpreted as a string. To put quotation marks inside of a string, use `\"`.
+```
+#Example:
+"\"I am a string,\" said the string, which was what he was when he was thinking through that tough thorough thought then."
+```
+
 ### COMPILATION
 The language will be compiled using a C based compiler into machine code that can then be run.
 This is to ensure that the language runs as fast as possible. However, to get the language started, 
 we will be using a Transpiler (Markipiler in American English) likely coded in javascript.
+
+(
