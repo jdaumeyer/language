@@ -30,33 +30,51 @@ function declaration, separated by a single space character.
 <function name> <parameter 1> <parameter 2> <parameter 3> ...
 ```
 
-### FUNCTION DECLARATION
-Custom functions can be defined using the process depicted below. For additional usage of the define function,
-see "VANILLA FUNCTIONS" below.
+### VARIABLE DECLARATION
+Variables are a human-readable name that can be assigned to functions for usage multiple times in one program.
+Variables can be defined using the process depicted below. For additional usage of the define function,
+see the "VANILLA FUNCTIONS" section below.
 
 Functions are defined using the syntax 
-```define <type> <name> <paramCount>``` 
-where type is the returned dataType,
-name is the name if the function, and paramCount is the number of parameters. This is demonstrated below as a
-simple concatenation function.
+```define <variableName> <function>``` 
+where variableName defines a new function that can be called as above with the methods in "FUNCTION SYNTAX". In
+addition to the standard functions included below in "VANILLA FUNCTIONS", `<function>` can be defined with one of
+the below "DATA FUNCTIONS" for data storage and the ability to define multi-line custom functions.
+
+### DATA FUNCTIONS
+While these functions can be used anywhere within a program, it is recommended to use them in conjunction with a
+defined variable, as demonstrated in "VARIABLE DECLARATION".
+
+ Function		| Syntax								| Description											| Example
+----------------|---------------------------------------|-------------------------------------------------------|----------------------------------
+int				| `int <value>`							| Creates an integer of given value.					| `define foo int 42` 	
+float			| `float <value>`						| Creates a floating-point decimal of given value.		| `define bar float 8.675309`
+bool			| `bool <value>`						| Creates a boolean of given value.						| `define far bool false`
+string 			| `string <value>`						| Created a string of given value.						| `define boo string "Hello, world!"
+array			| `array <length>`						| Creates an array of given length.						| `define fizz array 21`
+function		| `function [<params>] :`				| Defines a custom function with n parameters.			| `define buzz function int param1 int param2 :`
+
+In order for the language to forgo order of operations, it is neccesary for variable declarations of custom functions
+to be able to determine the number of parameters. This is accomplished through the use of a plier mark `:`, denoting the
+end of an infinite parameter sequence. An example exists below in the form of a simple concatenation function.
 ```
-#Example:
-define string TriCat 3 :
-	return + PARAM_1 (+ PARAM_2 PARAM_3)
+#Example (parens added for clarity):
+define TriCat function (string str1) (string str2) (string str3) :
+	return + str1 (+ str2 str3)
 	
 output TriCat "A man, " "a plan, " "a God's 'Nam, "
 ```
-Parameters are accessed through the local variables of `PARAM_1`, `PARAM_2`, `PARAM_3` and so on. All functions must
-have a return condition. For functions that wish to not return a value, it is recommended to use a return type
-of `void` to save memory.
+Parameters are accessed through the local variables of `str1`, `str2`, and `str3`, declared before the plier mark above.
+Having a return condition is not mandatory, though it is possible. These functions can be used with logic and operator functions. 
 
 ### VANILLA FUNCTIONS
-A list of functions loaded in any executed program is included for reference below:
+Including the data functions above, the following functions are loaded into any program by default. `import` allows for external
+library support, essentially adding the referenced file to the current before compile.
 
  Function		| Syntax								| Description											| Example
 ----------------|---------------------------------------|-------------------------------------------------------|----------------------------------
  \<variable\>	| `foo`									| Will return the stored value of the variable.			| `foo`
- define			| `define <type> <name> <value>`		| Defines a variable or function.						| `define int foo 12`
+ define			| `define <type> <name> <value>`		| Defines a variable or function (see above).			| `define foo int 12`
  =				| `= <var> <value>`						| Assigns a value to an existing variable of same type.	| `= foo 42`
  \+				| `+ <value1> <value2>`					| Adds or concatenates values depending on data type.	| `+ "S" "winter" #returns Wummer`<br>`+ 9 10 #returns 21`
  \-				| `- <value1> <value2>`					| Subtracts values of type int or float.				| `- 9 10 #returns -1`
@@ -67,9 +85,9 @@ A list of functions loaded in any executed program is included for reference bel
  \>				| `> <value1> <value2>`					| Is value1 greater than value2, both of same type?		| `> 9 10 #returns false`
  \<= or \>=		| `[see above]`							| Same as above, but returns true if values are equal.	| `<= 1 1 #returns true`
  ==				| `== <value1> <value2>`				| False unless vars are same type and value.			| `== 82 "Lot more than 82 toothpicks, Ray."`
- if				| `if <boolean> :`						| Executes following code block if true.				| `if true :`<br>`   output "hi"`
- while			| `while <boolean> :`					| Executes following code block repeatedly until false. | `while true :`<br>`   output "hi"`
- for			| `for <runOnce> <boolean> <runEvery> :`| Standard for loop.									| `for (define int i 0) (< i 100) (++ i)` 
+ if				| `if <boolean>`						| Executes following code block if true.				| `if true`<br>`   output "hi"`
+ while			| `while <boolean>	`					| Executes following code block repeatedly until false. | `while true`<br>`   output "hi"`
+ for			| `for <runOnce> <boolean> <runEvery>`	| Standard for loop.									| `for (define int i 0) (< i 100) (++ i)` 
  iterate		| `iterate <var> <amount>`				| Adds the given value to the var of type int or float. | `iterate foo 2`
  \+\+			| `++ <var>`							| The equivalent of `iterate <var> 1`					| `++ foo`
  \-\-			| `-- <var>`							| The equivalent of `iterate <var> -1`					| `-- foo`
@@ -78,21 +96,6 @@ A list of functions loaded in any executed program is included for reference bel
  return			| `return <value>`						| Evaluates deepest nested function to equal value.		| `return 42`
  output			| `output <value>`						| Outputs the value to console.							| `output "Hello world!"`
  
-### DATA TYPES
-The list of data types is able to be kept so small due to data having a dynamically created size.
-Instead of having a hard cap on the size of a variable, the language will look at the variable’s value and give 
-it the size needed. This, however, is a fixed size, as all variables are immutable.
-
-Data Type	|Type     | Description                               		 			|Example
-------------|---------|-------------------------------------------------------------|-----------------------------------------
-int 		|Integers | Basic numbers dynamically allocated size, defaults to 0.	| `define int foo 42`
-string		|Strings  | Plain Text, defaults to ""									| `define string bar "Hello world!"`
-bool		|Booleans | True or false, defaults to false							| `define bool far false`
-float		|Decimals | Decimal Numbers, defaults to 0.0							| `define float boo 8.675309`
-array		|\(any\)  | Stores a list of arbitrary other types.						| `define array fizz 3`
-final		|\(any\)  | Stores a single arbitrary other type that cannot be changed.| `define final buzz 3.141592653`
-void		|Void     | A null data type. Can only be set to value of "void"		| `define void fuzz void`
-
 ### ADDITIONAL SYNTAX
 Curly brackets and parenthesis may surround arbitrary code to make it more "human readable".
 As the language has no order of operations, these markings are treated as non-characters.
@@ -129,8 +132,8 @@ Array Method			| Definition															| Example
 `push <value>`			|Sets first index of value void to the given value. If no indexes are void, adds index and sets in that location. Returns index with which value was set.|`arr push "Eleven"` 
 ```
 #Example:
-define array foo 6
-define array bar 0
+define foo array foo 6
+define bar array 0
 
 foo push 82 #void getting replaced
 foo push 82
@@ -154,7 +157,6 @@ Ash
 [82,82,82,"Lot more than 82 toothpicks there Ray.",void,void]
 ["Ash","Tree","Never mind"]
 ```
-
 
 ### COMPILATION
 The language will be compiled using a C based compiler into machine code that can then be run.
