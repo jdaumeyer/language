@@ -50,12 +50,12 @@ defined variable, as demonstrated in "VARIABLE DECLARATION".
 int				| `int <value>`							| Creates an integer of given value.					| `define foo int 42` 	
 float			| `float <value>`						| Creates a floating-point decimal of given value.		| `define bar float 8.675309`
 bool			| `bool <value>`						| Creates a boolean of given value.						| `define far bool false`
-string 			| `string <value>`						| Created a string of given value.						| `define boo string "Hello, world!"
+string 			| `string <value>`						| Created a string of given value.						| `define boo string "Hello, world!"`
 array			| `array <length>`						| Creates an array of given length.						| `define fizz array 21`
 function		| `function [<params>] :`				| Defines a custom function with n parameters.			| `define buzz function int param1 int param2 :`
 
 In order for the language to forgo order of operations, it is neccesary for variable declarations of custom functions
-to be able to determine the number of parameters. This is accomplished through the use of a plier mark `:`, denoting the
+to be able to determine the number of parameters. This is accomplished through the use of a *Plier Mark* `:`, denoting the
 end of an infinite parameter sequence. An example exists below in the form of a simple concatenation function.
 ```
 #Example (parens added for clarity):
@@ -64,7 +64,7 @@ define TriCat function (string str1) (string str2) (string str3) :
 	
 output TriCat "A man, " "a plan, " "a God's 'Nam, "
 ```
-Parameters are accessed through the local variables of `str1`, `str2`, and `str3`, declared before the plier mark above.
+Parameters are accessed through the local variables of `str1`, `str2`, and `str3`, declared before the *Plier Mark* above.
 Having a return condition is not mandatory, though it is possible. These functions can be used with logic and operator functions. 
 
 ### VANILLA FUNCTIONS
@@ -128,8 +128,8 @@ Array Method			| Definition															| Example
 ------------------------|-----------------------------------------------------------------------|---------------------------------
 `length`				|Returns an integer representing the current size of the array.			|`arr length`
 `get <index>`			|Returns value at given index.											|`arr get 0`
-`set <index> <value>`	|Sets a given index to the given value.									|`arr set 0 "I'm Pickle Rick"`
-`push <value>`			|Sets first index of value void to the given value. If no indexes are void, adds index and sets in that location. Returns index with which value was set.|`arr push "Eleven"` 
+`set <index> <function>`|Sets a given index to the given value.									|`arr set 0 "I'm Pickle Rick"`
+`push <function>`		|Sets first index of value void to the given value. If no indexes are void, adds index and sets in that location. Returns index with which value was set.|`arr push "Eleven"` 
 ```
 #Example:
 define foo array foo 6
@@ -161,6 +161,6 @@ Ash
 ### COMPILATION
 The language will be compiled using a C based compiler into machine code that can then be run.
 This is to ensure that the language runs as fast as possible. However, to get the language started, 
-we will be using a Transpiler (Markipiler in American English) likely coded in javascript.
+we will be using a Transpiler likely coded in javascript.
 
 (
