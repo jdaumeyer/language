@@ -74,7 +74,7 @@ library support, essentially adding the referenced file to the current before co
  Function		| Syntax								| Description											| Example
 ----------------|---------------------------------------|-------------------------------------------------------|----------------------------------
  \<variable\>	| `foo`									| Will return the stored value of the variable.			| `foo`
- define			| `define <type> <name> <value>`		| Defines a variable or function (see above).			| `define foo int 12`
+ define			| `define <variableName> <function>`	| Defines a variable or function (see above).			| `define foo int 12`
  =				| `= <var> <value>`						| Assigns a value to an existing variable of same type.	| `= foo 42`
  \+				| `+ <value1> <value2>`					| Adds or concatenates values depending on data type.	| `+ "S" "winter" #returns Wummer`<br>`+ 9 10 #returns 21`
  \-				| `- <value1> <value2>`					| Subtracts values of type int or float.				| `- 9 10 #returns -1`
