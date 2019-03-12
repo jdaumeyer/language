@@ -126,26 +126,26 @@ when called, act as a function expecting one of the following functions to be ca
 
 Array Method			| Definition															| Example
 ------------------------|-----------------------------------------------------------------------|---------------------------------
-`length`				|Returns an integer representing the current size of the array.			|`arr length`
-`get <index>`			|Returns value at given index.											|`arr get 0`
-`set <index> <function>`|Sets a given index to the given value.									|`arr set 0 "I'm Pickle Rick"`
-`push <function>`		|Sets first index of value void to the given value. If no indexes are void, adds index and sets in that location. Returns index with which value was set.|`arr push "Eleven"` 
+`length`				|Returns an integer representing the current size of the array.			|`length arr`
+`get <index>`			|Returns value at given index.											|`get arr 0`
+`set <index> <function>`|Sets a given index to the given value.									|`set arr 0 "I'm Pickle Rick"`
+`push <function>`		|Sets first index of value void to the given value. If no indexes are void, adds index and sets in that location. Returns index with which value was set.|`push arr "Eleven"` 
 ```
 #Example:
 define foo array foo 6
 define bar array 0
 
-foo push 82 #void getting replaced
-foo push 82
-foo push 82
-foo push "Lot more than 82 toothpicks there Ray."
+push foo 82 #void getting replaced
+push foo 82
+push foo 82
+push foo "Lot more than 82 toothpicks there Ray."
 
-bar push void
-bar push void
-bar push "Ash" #void getting replaced
-bar push "Tree"
-bar push "Lane"
-bar set 3 "Never mind"
+push bar void
+push bar void
+push bar "Ash" #void getting replaced
+push bar "Tree"
+push bar "Lane"
+push bar 3 "Never mind"
 
 output bar get 0
 output foo
