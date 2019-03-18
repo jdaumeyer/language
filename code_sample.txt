@@ -11,18 +11,18 @@ define primes array 0 #array length of 0
 # while <boolean expression> :
 while < (primes length) primeLimit :
 	
-	define bool notPrime false
+	define bool notPrime false |
 	
 	#for <run once function> <boolean expression> <run after each iteration>
-	for (define i int 0) (& {< i (primes length)} {! notPrime}) (iterate i)
+	for (define int i | < i (length primes) & !notPrime | iterate i 1 |)
 		
 		if == (% currentNumber primes i) 0
-			= notPrime true
+			set notPrime true |
 
 	if ! notprime
-		primes push currentNumber
+		push primes currentNumber |
 	
-	++ currentNumber
+	increment currentNumber 1 |
 	
 # output <int/bool/string/float/array/object>
-output primes
+output primes |
