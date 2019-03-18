@@ -1,6 +1,7 @@
 # Custom Programming Language
-### An Innovation Lab Passion Project
-The following lists the goals for this project:
+## An Innovation Lab Passion Project
+
+### The following lists the goals for this project:
 * Make a functional programming language
 * Definition of functional programming - everything is based on functions within the programming language. 
 	Functions in programming are a stored set of commands that usually require data to be inputted to run.
@@ -14,12 +15,20 @@ The following lists the goals for this project:
 * All data remains constant, It is only changed from functions.
 
 ---
+## DESIGN DOC
 
 ### HOW TO READ THIS DOCUMENT
 * Code within angle brackets is to be treated as a value which must be filled in by the programmer.
 * Lines following the pound symbol (#) are comments and do not affect code execution.
 * This document is designed as documentation for those writing code in the language, but will also be used to 
 	plan future development. Any listed features may not be added, may be removed, or may be altered at any time.
+
+### MAIN SYNTAX
+* Follows Lisp like reverse polish notation, meaning that a function appears before its parameters. Take `+ 1 2` for example,the function is addition as represented by the plus sign. Then the parameters are the numbers 1 and 2.
+* Comments are any characters that follow a `#` sign. These characters are ignored by the compilier
+* The end of a command is represented by a `|` or vertical pipe symbol. This informs the compilier that the function has no more parameters
+* For all operations, the compilier will follow PEMDAS order of operations for mathematical expressions. So for example `\ 6 * 2 ( + 1 2)` will evaluate to 1 and not 9. That being said, parenthesis can be used to put emphasis on a command, as the command in a line with the highest level of parenthesis will be run first.
+
 
 ### FUNCTION SYNTAX
 The language is based entirely around blocks of text called functions. Every function will accept a defined number
@@ -96,28 +105,6 @@ library support, essentially adding the referenced file to the current before co
  return			| `return <value>`						| Evaluates deepest nested function to equal value.		| `return 42`
  output			| `output <value>`						| Outputs the value to console.							| `output "Hello world!"`
  
-### ADDITIONAL SYNTAX
-Curly brackets and parenthesis may surround arbitrary code to make it more "human readable".
-As the language has no order of operations, these markings are treated as non-characters.
-```
-#Example:
-{ + 1 2 }
-if > (+ 1 2) (+ 1 2)
-define int foo {- {10 7}) (#This is discouraged but will otherwise have no effect on the code.
-)))}){
-```
-
-Single line comments are available for developers to provide human-readable code for complex logic.
-Good code and good usage of parenthesis will need few if any comments.
-```
-#Example:
-```
-
-Code surrounded in quotation marks will be interpreted as a string. To put quotation marks inside of a string, use `\"`.
-```
-#Example:
-"\"I am a string,\" said the string, which was what he was when he was thinking through that tough thorough thought then."
-```
 
 ### ARRAY FUNCTIONS
 Arrays can be created of arbitrary length by using `define array <arrayName> <length>`. Arrays, 
