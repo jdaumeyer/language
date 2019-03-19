@@ -27,7 +27,7 @@
 * Follows Lisp like reverse polish notation, meaning that a function appears before its parameters. Take `+ 1 2` for example,the function is addition as represented by the plus sign. Then the parameters are the numbers 1 and 2.
 * Comments are any characters that follow a `#` sign. These characters are ignored by the compilier
 * The end of a command is represented by a `|` or vertical pipe symbol. This informs the compilier that the function has no more parameters
-* For all operations, the compilier will follow PEMDAS order of operations for mathematical expressions. So for example `\ 6 * 2 ( + 1 2)` will evaluate to 1 and not 9. That being said, parenthesis can be used to put emphasis on a command, as the command in a line with the highest level of parenthesis will be run first.
+* For all operations, order of operations will be recursively parsed from left to right, top level to bottom. There is no need for parenthesis.
 
 
 ### FUNCTION SYNTAX
@@ -104,7 +104,27 @@ library support, essentially adding the referenced file to the current before co
  import			| `import <filename as string>`			| Appends the referenced file to the active program.	| `import "crown_prince.doc.exe"`
  return			| `return <value>`						| Evaluates deepest nested function to equal value.		| `return 42`
  output			| `output <value>`						| Outputs the value to console.							| `output "Hello world!"`
- 
+
+### ADDITIONAL SYNTAX
+Curly brackets and parenthesis may surround arbitrary code to make it more "human readable".
+As the language has no order of operations, these markings are treated as non-characters.
+```
+#Example:
+{ + 1 2 }
+if > (+ 1 2) (+ 1 2)
+define int foo {- {10 7}) (#This is discouraged but will otherwise have no effect on the code.
+)))}){
+```
+Single line comments are available for developers to provide human-readable code for complex logic.
+Good code and good usage of parenthesis will need few if any comments.
+```
+#Example:
+```
+Code surrounded in quotation marks will be interpreted as a string. To put quotation marks inside of a string, use `\"`.
+```
+#Example:
+"\"I am a string,\" said the string, which was what he was when he was thinking through that tough thorough thought then."
+```
 
 ### ARRAY FUNCTIONS
 Arrays can be created of arbitrary length by using `define array <arrayName> <length>`. Arrays, 
@@ -119,7 +139,7 @@ Array Method			| Definition															| Example
 `push <function>`		|Sets first index of value void to the given value. If no indexes are void, adds index and sets in that location. Returns index with which value was set.|`push arr "Eleven"` 
 ```
 #Example:
-define foo array foo 6
+define foo array 6
 define bar array 0
 
 push foo 82 #void getting replaced
