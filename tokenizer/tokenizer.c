@@ -17,8 +17,12 @@ int main() {
     int fileLength = ftell(FP);
     rewind(FP);
     char text[fileLength];
-    fgets(text, fileLength, FP);
-
+	
+	while(sizeof(text) < fileLength) {
+		char line[50];
+		fgets(line, fileLength, FP);
+		strcat(text,line);
+	}
     printf("File Length: %i chars\n\n", fileLength);
     printf ("File Contents: \n%s", text);
     fclose(FP);

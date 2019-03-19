@@ -1,6 +1,7 @@
 # Custom Programming Language
-### An Innovation Lab Passion Project
-The following lists the goals for this project:
+## An Innovation Lab Passion Project
+
+### The following lists the goals for this project:
 * Make a functional programming language
 * Definition of functional programming - everything is based on functions within the programming language. 
 	Functions in programming are a stored set of commands that usually require data to be inputted to run.
@@ -14,12 +15,20 @@ The following lists the goals for this project:
 * All data remains constant, It is only changed from functions.
 
 ---
+## DESIGN DOC
 
 ### HOW TO READ THIS DOCUMENT
 * Code within angle brackets is to be treated as a value which must be filled in by the programmer.
 * Lines following the pound symbol (#) are comments and do not affect code execution.
 * This document is designed as documentation for those writing code in the language, but will also be used to 
 	plan future development. Any listed features may not be added, may be removed, or may be altered at any time.
+
+### MAIN SYNTAX
+* Follows Lisp like reverse polish notation, meaning that a function appears before its parameters. Take `+ 1 2` for example,the function is addition as represented by the plus sign. Then the parameters are the numbers 1 and 2.
+* Comments are any characters that follow a `#` sign. These characters are ignored by the compilier
+* The end of a command is represented by a `|` or vertical pipe symbol. This informs the compilier that the function has no more parameters
+* For all operations, order of operations will be recursively parsed from left to right, top level to bottom. There is no need for parenthesis.
+
 
 ### FUNCTION SYNTAX
 The language is based entirely around blocks of text called functions. Every function will accept a defined number
@@ -95,7 +104,7 @@ library support, essentially adding the referenced file to the current before co
  import			| `import <filename as string>`			| Appends the referenced file to the active program.	| `import "crown_prince.doc.exe"`
  return			| `return <value>`						| Evaluates deepest nested function to equal value.		| `return 42`
  output			| `output <value>`						| Outputs the value to console.							| `output "Hello world!"`
- 
+
 ### ADDITIONAL SYNTAX
 Curly brackets and parenthesis may surround arbitrary code to make it more "human readable".
 As the language has no order of operations, these markings are treated as non-characters.
@@ -106,13 +115,11 @@ if > (+ 1 2) (+ 1 2)
 define int foo {- {10 7}) (#This is discouraged but will otherwise have no effect on the code.
 )))}){
 ```
-
 Single line comments are available for developers to provide human-readable code for complex logic.
 Good code and good usage of parenthesis will need few if any comments.
 ```
 #Example:
 ```
-
 Code surrounded in quotation marks will be interpreted as a string. To put quotation marks inside of a string, use `\"`.
 ```
 #Example:
@@ -126,26 +133,26 @@ when called, act as a function expecting one of the following functions to be ca
 
 Array Method			| Definition															| Example
 ------------------------|-----------------------------------------------------------------------|---------------------------------
-`length`				|Returns an integer representing the current size of the array.			|`arr length`
-`get <index>`			|Returns value at given index.											|`arr get 0`
-`set <index> <function>`|Sets a given index to the given value.									|`arr set 0 "I'm Pickle Rick"`
-`push <function>`		|Sets first index of value void to the given value. If no indexes are void, adds index and sets in that location. Returns index with which value was set.|`arr push "Eleven"` 
+`length`				|Returns an integer representing the current size of the array.			|`length arr`
+`get <index>`			|Returns value at given index.											|`get arr 0`
+`set <index> <function>`|Sets a given index to the given value.									|`set arr 0 "I'm Pickle Rick"`
+`push <function>`		|Sets first index of value void to the given value. If no indexes are void, adds index and sets in that location. Returns index with which value was set.|`push arr "Eleven"` 
 ```
 #Example:
-define foo array foo 6
+define foo array 6
 define bar array 0
 
-foo push 82 #void getting replaced
-foo push 82
-foo push 82
-foo push "Lot more than 82 toothpicks there Ray."
+push foo 82 #void getting replaced
+push foo 82
+push foo 82
+push foo "Lot more than 82 toothpicks there Ray."
 
-bar push void
-bar push void
-bar push "Ash" #void getting replaced
-bar push "Tree"
-bar push "Lane"
-bar set 3 "Never mind"
+push bar void
+push bar void
+push bar "Ash" #void getting replaced
+push bar "Tree"
+push bar "Lane"
+push bar 3 "Never mind"
 
 output bar get 0
 output foo
