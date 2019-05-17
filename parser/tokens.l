@@ -11,9 +11,12 @@ extern "C" int yywrap() { }
 
 [ \t\n]			;
 [a-zA-Z_][a-zA-Z0-9_]*	SAVE_TOKEN; return TIDENTIFIER;
-"="			return TOKEN(TEQUAL);
-"=="			return TOKEN(TCEQ);
-"!="			return TOKEN(TCNE);
-"<"			return TOKEN(TCLT);
-
-">"
+"="			return TOKEN(ASSIGN);
+"=="			return TOKEN(EQUAL);
+"!="			return TOKEN(NOT_EQUAL);
+"<"			return TOKEN(LESS_THAN);
+">"			return TOKEN(GREATER_THAN);
+"<="			return TOKEN(LESS_EQUAL);
+">="			return TOKEN(GREAT_EQUAL);
+"("			return TOKEN(LEFT_PAREN);
+")"			return TOKEN(RIGHT_PAREN);
