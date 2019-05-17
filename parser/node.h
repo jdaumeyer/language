@@ -68,7 +68,46 @@ public:
 	int op;
 	ExpressionNode& left;
 	ExpressionNode& right;
-	BinaryOperatorNode(ExpressionNode& left, int op, ExpressionNode& right):
-		left(left), right(right) {}
+	BinaryOperatorNode(ExpressionNode& left, int op, ExpressionNode& right): left(left), right(right) {}
 	virtual llvm::Value* codeGen(CodeGenContext& context);
+};
+
+class AssignmentNode : public ExpressionNode {
+public:
+	IdentifierNode& type;
+	ExpressionNode& value;
+	AssignmentNode& (IdentifierNode& type, ExpressionNode& value) :	type(type), value(value) {}
+	virtual llvm::Value* codeGen(CodeGenCOntext& context);
+};
+
+class BlockNode : public ExpressionNode {
+public:
+	Statement statements;
+	BlockNode() {}
+	virtual llvm::Value* codeGen(CodeGenContext& context);
+};
+
+class ExpressionStatementNode : public StatementNode {
+public: 
+	ExpressionNode& expression;
+	ExpressionStatementNode(ExpressionNode& expression) : expression(expression) {}
+	virtual llvm::Value*
+};
+
+class VariableDeclarationNode : public StatementNode {
+public:
+	const IdentifierNode& type;
+	IdentifierNode& id;
+	ExprssionNode *assignmentExpression;
+	VariableDeclarationNode(const IdentifierNode& type, IdentifierNode& id) : type(type), id(id) {}
+	VariableDeclarationNode(const IdentifierNode& type, IdentifierNode& id, ExpressionNode assignmentExpression) : type(type), id(id), assignmentExpression(assignmentExpression) {}
+};
+
+class FunctionDeclarationNode : public StatementNode {
+public:
+	const IdentifierNode& type;
+	const IdentifierNode& id;
+	VariableList arguments;
+	BlockNode& block;
+	FunctionDeclarationNode(const IdentifierNode& type, const IdentifierNode& id, VariableList arguments, BlockNode& block) : type(type), id(id), arguments(arguments), block(block) {} 
 };
